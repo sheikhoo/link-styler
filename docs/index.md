@@ -10,7 +10,7 @@ npm install link-styler
 ### Usage
 Here is an example of how to use link-styler:
 
-```
+```js
 import linkStyler from 'link-styler';
 
 linkStyler();
@@ -22,7 +22,7 @@ linkStyler();
 
 By default, link-styler will style the link with `'#000000d9'` color and `'#a9a9a94f'` background color by border radius 15px. It will also add an external link icon. You can customize the styling by passing options to the linkStyler function:
 
-```
+```js
 const options = {
     bg: true,
     bgColor: '#a9a9a94f',
