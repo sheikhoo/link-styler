@@ -6,63 +6,87 @@ interface Setting {
   showIcon: boolean;
 }
 
-export async function linkStyler(
-  s: Setting = {
-    bg: true,
-    bgColor: '#a9a9a94f',
-    textColor: '#000000d9',
-    borderRadius: 15,
-    showIcon: true,
-  }
-) {
-  console.log('linkStyler->', 'Start');
-  console.log('linkStyler->', s);
-  replaceLinks(s);
+enum Type {
+  ONLOAD = 0,
+  CONVERT = 1,
 }
 
-async function replaceLinks(s: Setting): Promise<void> {
-  if (typeof window !== 'undefined') {
-    console.log('replaceLinks->', 'window');
-    window.addEventListener('load', async function () {
-      console.log('replaceLinks->', 'window LOAD');
-      // Find all elements in the page that contain text
-      const elements = document.querySelectorAll(
-        '*:not(script):not(style):not(meta):not(title):not(head):not(html)'
-      );
+let defaultSetting: Setting = {
+  bg: true,
+  bgColor: '#a9a9a94f',
+  textColor: '#000000d9',
+  borderRadius: 15,
+  showIcon: true,
+};
 
-      // Loop through each element and find links within the text
-      for (let i = 0; i < elements.length; i++) {
-        const element = elements[i];
-        const text = element.innerHTML || '';
-        console.log('element', element);
-        console.log('text', text);
+let setting: Setting;
 
-        const regex =
-          /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-        let replacedText = text;
+export function start(s: Setting = defaultSetting) {
+  setting = s;
+  replaceLinks(Type.ONLOAD);
+}
 
-        // Find all links within the text and replace them with their titles
-        let match;
-        while ((match = regex.exec(text)) !== null) {
-          const link = match[0];
-          try {
-            // for get site title
-            /*const response = await fetch('https://title.mihir.ch/' + link);
-            const title = await response;
-            await console.log('response', response);*/
+export function convert(text: string, s: Setting = defaultSetting) {
+  setting = s;
+  return replaceLinks(Type.CONVERT, text);
+}
 
-            /*const title = response.data.match(
-              /<title[^>]*>([^<]+)<\/title>/
-            )[1];*/
-            let replaceText = `<span style="
+function replaceLinks(type: Type, t: string = '') {
+  if (type === Type.ONLOAD) {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('load', function () {
+        // Find all elements in the page that contain text
+        const elements = document.querySelector('body');
+
+        getAllElements(elements);
+      });
+    }
+  } else if (type === Type.CONVERT) {
+    return convertText(t);
+  }
+}
+
+function getAllElements(node) {
+  console.log('node --> ', node);
+
+  if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
+    const parentTag = node.parentNode;
+    if (parentTag.tagName !== 'A') {
+      parentTag.innerHTML = convertText(node.textContent);
+    }
+  } else if (node.nodeType === Node.ELEMENT_NODE) {
+    if (node.tagName !== 'A') {
+      let len = node.childNodes.length;
+      let n = node;
+      for (let i = 0; i < len; i++) {
+        getAllElements(n.childNodes[i]);
+      }
+    }
+  }
+}
+
+function convertText(t: string): string {
+  const text = t;
+
+  const regex =
+    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
+  let replacedText = text;
+
+  // Find all links within the text and replace them with their titles
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    const link = match[0];
+
+    try {
+      let replaceText = `<span style="
                 position: relative;
-                background: ${s.bgColor};
+                background: ${setting.bgColor};
                 padding: 1.5px 3px;
-                border-radius: ${s.borderRadius}px;
+                border-radius: ${setting.borderRadius}px;
                 align-items: center;
             ">`;
-            replaceText += s.showIcon
-              ? `<span style="
+      replaceText += setting.showIcon
+        ? `<span style="
                   position: absolute;
                   top: 3px;
               ">
@@ -71,24 +95,17 @@ async function replaceLinks(s: Setting): Promise<void> {
                   <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
                 </svg>
               </span>`
-              : ``;
-            replaceText += `<a href="${link}" style="
+        : ``;
+      replaceText += `<a href="${link}" style="
                   margin-left: 19px;
                   text-decoration: none;
-                  color: ${s.textColor};
+                  color: ${setting.textColor};
               ">${link}</a>
             </span>`;
-            replacedText = replacedText.replace(link, replaceText);
-          } catch (error) {
-            console.error(`Error fetching link title: ${error}`);
-          }
-        }
-
-        // Set the innerHTML of the element to the replaced text
-        console.log('replacedText', replacedText);
-
-        element.innerHTML = replacedText;
-      }
-    });
+      replacedText = replacedText.replace(link, replaceText);
+    } catch (error) {
+      console.error(`Error fetching link title: ${error}`);
+    }
   }
+  return replacedText;
 }
