@@ -52,7 +52,11 @@ function getAllElements(node) {
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
     const parentTag = node.parentNode;
     if (parentTag.tagName !== 'A') {
-      parentTag.innerHTML = convertText(node.textContent);
+      let html = parentTag.innerHTML;
+      parentTag.innerHTML = html.replace(
+        node.textContent,
+        convertText(node.textContent)
+      );
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
     if (node.tagName !== 'A') {
