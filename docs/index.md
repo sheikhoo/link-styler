@@ -4,7 +4,6 @@
 
 <a href="https://www.npmjs.com/package/link-styler"><img src="https://user-images.githubusercontent.com/11958698/222946410-f8c933d9-fff7-4c0f-9ca7-d60bc02a5f6e.png"  width="45" ></a> <a href="https://github.com/sheikhoo/link-styler"><img src="https://user-images.githubusercontent.com/11958698/222958629-a9503238-bb8e-4a45-820c-e0e696c5b4de.png"  width="45" ></a>
 
-
 ## Installation
 
 You can install link-styler using npm:
@@ -24,7 +23,7 @@ Here is an example of how to use link-styler:
 ```js
 import linkStyler from 'link-styler';
 
-linkStyler();
+linkStyler.start();
 ```
 
 ### This will output the following:
@@ -42,7 +41,7 @@ const options = {
   showIcon: true,
 };
 
-linkStyler(options);
+linkStyler.start(options);
 ```
 
 ## Options

@@ -12,14 +12,18 @@ You can install link-styler using npm:
 npm install link-styler
 ```
 
+```js
+<script src="https://unpkg.com/link-styler@1.0.1/dist/link-styler.js"></script>
+```
+
 ### Usage
 
 Here is an example of how to use link-styler:
 
-```
+```js
 import linkStyler from 'link-styler';
 
-linkStyler();
+linkStyler.start();
 ```
 
 ### This will output the following:
@@ -28,16 +32,16 @@ linkStyler();
 
 By default, link-styler will style the link with `'#000000d9'` color and `'#a9a9a94f'` background color by border radius 15px. It will also add an external link icon. You can customize the styling by passing options to the linkStyler function:
 
-```
+```js
 const options = {
-    bg: true,
-    bgColor: '#a9a9a94f',
-    textColor: '#000000d9',
-    borderRadius: 15,
-    showIcon: true,
-  };
+  bg: true,
+  bgColor: '#a9a9a94f',
+  textColor: '#000000d9',
+  borderRadius: 15,
+  showIcon: true,
+};
 
-linkStyler(options);
+linkStyler.start(options);
 ```
 
 ## Options
