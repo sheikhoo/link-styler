@@ -21,7 +21,7 @@ npm install link-styler
 Here is an example of how to use link-styler:
 
 ```js
-import linkStyler from 'link-styler';
+import { linkStyler } from 'link-styler';
 
 linkStyler.start();
 ```

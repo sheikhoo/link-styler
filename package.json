@@ -1,6 +1,6 @@
 {
   "name": "link-styler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "exports": {
+    ".": "./lib/index.js"
+  }
 }
