@@ -13,7 +13,7 @@ npm install link-styler
 ```
 
 ```js
-<script src="https://unpkg.com/link-styler@1.0.1/dist/link-styler.js"></script>
+<script src="https://unpkg.com/link-styler/dist/link-styler.js"></script>
 ```
 
 ### Usage
