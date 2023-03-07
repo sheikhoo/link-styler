@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>link-styler example</title>
-    <script src="https://unpkg.com/link-styler/dist/link-styler.js"></script>
+    <!-- <script src="https://unpkg.com/link-styler/dist/link-styler.js"></script> -->
+    <script src="../../dist/link-styler.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
     <style>
+      body{
+        font-family: 'Trirong', serif;
+        background-color: #5d5d5d;
+      }
       .box {
         width: 700px;
-        height: 300px;
+        height: auto;
         margin: auto;
-        background: #e1e1e1;
+        background: #ffffff;
         padding: 20px;
         border-radius: 20px;
         border: 1px solid #cfcece;
@@ -40,13 +46,31 @@
       </p>
       <p>Thank you for choosing Link Styler!</p>
     </div>
+    <div class="box" style="margin-top: 5px">
+      <p>
+        Hi, my name is Sadegh and I am a skilled programmer with 5 years of
+        experience in a variety of programming languages, including JAVA,
+        Springboot, JavaScript, Oracle, MySQL, React, and more.
+      </p>
+
+      <p>
+        You can learn more about my professional background by checking out my
+        resume on LinkedIn at https://www.linkedin.com/in/sheikhoo .
+      </p>
+      <p>
+        In addition, you can find examples of my work on my GitHub profile at
+        https://github.com/sheikhoo and my NPM packages at
+        https://www.npmjs.com/~sheikhoo.iran .</p>
+      </p>
+    </div>
     <script>
       const options = {
         bg: true,
-        bgColor: '#000000c2',
-        textColor: '#ffffffd9',
+        bgColor: '#c7c7c7c2',
+        textColor: '#000000d9',
         borderRadius: 15,
         showIcon: true,
+        iconColor: true,
       };
       linkStyler.start(options);
     </script>

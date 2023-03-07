@@ -99,6 +99,7 @@ function convertText(t: string): string {
                 padding: 1.5px 3px;
                 border-radius: ${setting.borderRadius}px;
                 align-items: center;
+                white-space: nowrap;
             ">`;
       replaceText += setting.showIcon
         ? `<span style="
@@ -122,7 +123,7 @@ function convertText(t: string): string {
                   margin-left: 21px;
                   text-decoration: none;
                   color: ${setting.textColor};
-              ">${displayLink}</a>
+              " title="${link}">${displayLink}</a>
             </span>`;
       replacedText = replacedText.replace(link, replaceText);
     } catch (error) {
