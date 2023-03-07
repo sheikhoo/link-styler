@@ -1,4 +1,5 @@
 import icons from './icons.json';
+import colors from './color.json';
 
 interface Setting {
   bg: boolean;
@@ -6,6 +7,7 @@ interface Setting {
   textColor: string;
   borderRadius: number;
   showIcon: boolean;
+  iconColor: boolean;
 }
 
 enum Type {
@@ -19,6 +21,7 @@ let defaultSetting: Setting = {
   textColor: '#000000d9',
   borderRadius: 15,
   showIcon: true,
+  iconColor: true,
 };
 
 let setting: Setting;
@@ -84,9 +87,12 @@ function convertText(t: string): string {
     const link = match[0];
 
     try {
-      let hostName = new URL(link).hostname.split('.').slice(-2).join('.');
+      let url = new URL(link);
+      let hostName = url.hostname.split('.').slice(-2).join('.');
 
       let icon = icons[hostName] ? icons[hostName] : icons['defualt'];
+      let displayLink =
+        `<span style='font-weight: bold;'>${hostName}</span>` + url.pathname;
       let replaceText = `<span style="
                 position: relative;
                 background: ${setting.bgColor};
@@ -98,7 +104,13 @@ function convertText(t: string): string {
         ? `<span style="
                   position: absolute;
                   top: 3px;
-                  color: ${setting.textColor};
+                  color: ${
+                    setting.iconColor
+                      ? colors[hostName]
+                        ? colors[hostName]
+                        : setting.textColor
+                      : setting.textColor
+                  };
                   margin-left: 2px;
               ">
                 ` +
@@ -110,7 +122,7 @@ function convertText(t: string): string {
                   margin-left: 21px;
                   text-decoration: none;
                   color: ${setting.textColor};
-              ">${link}</a>
+              ">${displayLink}</a>
             </span>`;
       replacedText = replacedText.replace(link, replaceText);
     } catch (error) {

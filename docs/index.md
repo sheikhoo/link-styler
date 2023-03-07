@@ -55,6 +55,7 @@ linkStyler.start(options);
 | textColor    | `'#000000d9'` | string  | -           |
 | borderRadius | `15`          | number  | -           |
 | showIcon     | `true`        | boolean | -           |
+| iconColor    | `true`        | boolean | -           |
 
 ## License
 

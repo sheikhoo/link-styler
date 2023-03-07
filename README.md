@@ -48,13 +48,14 @@ linkStyler.start(options);
 
 `link-styler` accepts the following options:
 
-| Option       | Default Value | Description |
-| ------------ | ------------- | ----------- |
-| bg           | `true`        | -           |
-| bgColor      | `'#a9a9a94f'` | -           |
-| textColor    | `'#000000d9'` | -           |
-| borderRadius | `15`          | -           |
-| showIcon     | `true`        | -           |
+| Option       | Default Value | Type    | Description |
+| ------------ | ------------- | ------- | ----------- |
+| bg           | `true`        | boolean | -           |
+| bgColor      | `'#a9a9a94f'` | string  | -           |
+| textColor    | `'#000000d9'` | string  | -           |
+| borderRadius | `15`          | number  | -           |
+| showIcon     | `true`        | boolean | -           |
+| iconColor    | `true`        | boolean | -           |
 
 ## License
 
