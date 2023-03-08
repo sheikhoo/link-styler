@@ -89,10 +89,11 @@ function convertText(t: string): string {
     try {
       let url = new URL(link);
       let hostName = url.hostname.split('.').slice(-2).join('.');
+      let displayHostName = url.hostname.replace('www.','');
 
       let icon = icons[hostName] ? icons[hostName] : icons['defualt'];
       let displayLink =
-        `<span style='font-weight: bold;'>${hostName}</span>` + url.pathname;
+        `<span style='font-weight: bold;'>${displayHostName}</span>` + (url.pathname.length>10?url.pathname.substring(0,10)+'...':url.pathname);
       let replaceText = `<span style="
                 position: relative;
                 background: ${setting.bgColor};
