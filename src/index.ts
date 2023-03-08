@@ -8,6 +8,7 @@ interface Setting {
   borderRadius: number;
   showIcon: boolean;
   iconColor: boolean;
+  pathnameLengthLimit: number;
 }
 
 enum Type {
@@ -22,17 +23,18 @@ let defaultSetting: Setting = {
   borderRadius: 15,
   showIcon: true,
   iconColor: true,
+  pathnameLengthLimit: 20
 };
 
 let setting: Setting;
 
 export function start(s: Setting = defaultSetting) {
-  setting = s;
+  setting = { ...defaultSetting, ...s };
   replaceLinks(Type.ONLOAD);
 }
 
 export function convert(text: string, s: Setting = defaultSetting) {
-  setting = s;
+  setting = { ...defaultSetting, ...s };
   return replaceLinks(Type.CONVERT, text);
 }
 
@@ -93,7 +95,7 @@ function convertText(t: string): string {
 
       let icon = icons[hostName] ? icons[hostName] : icons['defualt'];
       let displayLink =
-        `<span style='font-weight: bold;'>${displayHostName}</span>` + (url.pathname.length>10?url.pathname.substring(0,10)+'...':url.pathname);
+        `<span style='font-weight: bold;'>${displayHostName}</span>${url.pathname.length>setting.pathnameLengthLimit?url.pathname.substring(0,setting.pathnameLengthLimit)+'...':url.pathname}`;
       let replaceText = `<span style="
                 position: relative;
                 background: ${setting.bgColor};
@@ -101,8 +103,8 @@ function convertText(t: string): string {
                 border-radius: ${setting.borderRadius}px;
                 align-items: center;
                 white-space: nowrap;
-            ">`;
-      replaceText += setting.showIcon
+            ">
+            ${setting.showIcon
         ? `<span style="
                   position: absolute;
                   top: 3px;
@@ -119,8 +121,8 @@ function convertText(t: string): string {
           icon +
           `
               </span>`
-        : ``;
-      replaceText += `<a href="${link}" style="
+        : ``}
+      <a href="${link}" style="
                   margin-left: 21px;
                   text-decoration: none;
                   color: ${setting.textColor};

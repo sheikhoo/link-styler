@@ -5,6 +5,7 @@ interface Setting {
     borderRadius: number;
     showIcon: boolean;
     iconColor: boolean;
+    pathnameLengthLimit: number;
 }
 export declare function start(s?: Setting): void;
 export declare function convert(text: string, s?: Setting): string;

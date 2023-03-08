@@ -39,6 +39,8 @@ const options = {
   textColor: '#000000d9',
   borderRadius: 15,
   showIcon: true,
+  iconColor: true,
+  pathnameLengthLimit: 20
 };
 
 linkStyler.start(options);
@@ -48,14 +50,15 @@ linkStyler.start(options);
 
 `link-styler` accepts the following options:
 
-| Option       | Default Value | Type    | Description |
-| ------------ | ------------- | ------- | ----------- |
-| bg           | `true`        | boolean | -           |
-| bgColor      | `'#a9a9a94f'` | string  | -           |
-| textColor    | `'#000000d9'` | string  | -           |
-| borderRadius | `15`          | number  | -           |
-| showIcon     | `true`        | boolean | -           |
-| iconColor    | `true`        | boolean | -           |
+| Option                 | Default Value | Type    | Optional | Description |
+| ------------           | ------------- | ------- | -------- | ----------- |
+| bg                     | `true`        | boolean | *        | -           |
+| bgColor                | `'#a9a9a94f'` | string  | *        | -           |
+| textColor              | `'#000000d9'` | string  | *        | -           |
+| borderRadius           | `15`          | number  | *        | -           |
+| showIcon               | `true`        | boolean | *        | -           |
+| iconColor              | `true`        | boolean | *        | -           |
+| pathnameLengthLimit    | `20`          | number  | *        | -           |
 
 ## License
 
