@@ -1,27 +1,18 @@
 import { Setting } from './interface';
 import { Type } from './enum';
 import { Data } from './constants/data';
-
-
-let defaultSetting: Setting = {
-  bg: true,
-  bgColor: '#a9a9a94f',
-  textColor: '#000000d9',
-  borderRadius: 15,
-  showIcon: true,
-  iconColor: true,
-  pathnameLengthLimit: 20
-};
+import { DefaultSetting } from './constants/defaultSetting';
+import { convertTextLink } from './util/convertTextLink';
 
 let setting: Setting;
 
-export function start(s: Setting = defaultSetting) {
-  setting = { ...defaultSetting, ...s };
+export function start(s: Setting = DefaultSetting) {
+  setting = { ...DefaultSetting, ...s };
   replaceLinks(Type.ONLOAD);
 }
 
-export function convert(text: string, s: Setting = defaultSetting) {
-  setting = { ...defaultSetting, ...s };
+export function convert(text: string, s: Setting = DefaultSetting) {
+  setting = { ...DefaultSetting, ...s };
   return replaceLinks(Type.CONVERT, text);
 }
 
@@ -36,7 +27,7 @@ function replaceLinks(type: Type, t: string = '') {
       });
     }
   } else if (type === Type.CONVERT) {
-    return convertText(t);
+    return convertTextLink(t,setting);
   }
 }
 
@@ -49,7 +40,7 @@ function getAllElements(node) {
       let html = parentTag.innerHTML;
       parentTag.innerHTML = html.replace(
         node.textContent,
-        convertText(node.textContent)
+        convertTextLink(node.textContent,setting)
       );
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
@@ -63,65 +54,6 @@ function getAllElements(node) {
   }
 }
 
-function convertText(t: string): string {
-  const text = t;
-
-  const regex =
-    /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
-  let replacedText = text;
-
-  // Find all links within the text and replace them with their titles
-  let match;
-  while ((match = regex.exec(text)) !== null) {
-    const link = match[0];
-
-    try {
-      let url = new URL(link);
-      let hostName = url.hostname.split('.').slice(-2).join('.');
-      let displayHostName = url.hostname.replace('www.','');
-
-      let icon = Data[hostName] ? Data[hostName].svg : Data["defualt"].svg;
-      let displayLink =
-        `<span style='font-weight: bold;'>${displayHostName}</span>${url.pathname.length>setting.pathnameLengthLimit?url.pathname.substring(0,setting.pathnameLengthLimit)+'...':url.pathname}`;
-      let replaceText = `<span style="
-                position: relative;
-                background: ${setting.bgColor};
-                padding: 1.5px 3px;
-                border-radius: ${setting.borderRadius}px;
-                align-items: center;
-                white-space: nowrap;
-            ">
-            ${setting.showIcon
-        ? `<span style="
-                  position: absolute;
-                  top: 3px;
-                  color: ${
-                    setting.iconColor
-                      ? Data[hostName]
-                        ? Data[hostName].color
-                        : setting.textColor
-                      : setting.textColor
-                  };
-                  margin-left: 2px;
-              ">
-                ` +
-          icon +
-          `
-              </span>`
-        : ``}
-      <a href="${link}" style="
-                  margin-left: 21px;
-                  text-decoration: none;
-                  color: ${setting.textColor};
-              " title="${link}">${displayLink}</a>
-            </span>`;
-      replacedText = replacedText.replace(link, replaceText);
-    } catch (error) {
-      console.error(`Error fetching link title: ${error}`);
-    }
-  }
-  return replacedText;
-}
 
 export const linkStyler = {
   start: start,

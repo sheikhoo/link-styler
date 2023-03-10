@@ -6,4 +6,5 @@ export interface Setting {
     showIcon: boolean;
     iconColor: boolean;
     pathnameLengthLimit: number;
+    atsignPath: string;
   }
