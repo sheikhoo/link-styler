@@ -10,16 +10,14 @@ export function convertTextAtsign(t:string,setting: Setting):string{
   // Find all links within the text and replace them with their titles
   let match;
   while ((match = regex.exec(text)) !== null) {
-    const link = match[0];
+    const atsign = match[0];
 
     try {
-      let url = new URL(link);
-      let hostName = url.hostname.split('.').slice(-2).join('.');
-      let displayHostName = url.hostname.replace('www.','');
+      let atsignText = atsign.replace('@','');
 
-      let icon = Data[hostName] ? Data[hostName].svg : Data["defualt"].svg;
-      let displayLink =
-        `<span style='font-weight: bold;'>${displayHostName}</span>${url.pathname.length>setting.pathnameLengthLimit?url.pathname.substring(0,setting.pathnameLengthLimit)+'...':url.pathname}`;
+      let icon = Data["atsign"].svg;
+      let displayAtsign =
+        `<span style='font-weight: bold;'>${atsignText}</span>`;
       let replaceText = `<span style="
                 position: relative;
                 background: ${setting.bgColor};
@@ -32,13 +30,7 @@ export function convertTextAtsign(t:string,setting: Setting):string{
         ? `<span style="
                   position: absolute;
                   top: 3px;
-                  color: ${
-                    setting.iconColor
-                      ? Data[hostName]
-                        ? Data[hostName].color
-                        : setting.textColor
-                      : setting.textColor
-                  };
+                  color: ${setting.textColor};
                   margin-left: 2px;
               ">
                 ` +
@@ -46,13 +38,13 @@ export function convertTextAtsign(t:string,setting: Setting):string{
           `
               </span>`
         : ``}
-      <a href="${link}" style="
+      <a href="${setting.atsignPath+atsignText}" style="
                   margin-left: 21px;
                   text-decoration: none;
                   color: ${setting.textColor};
-              " title="${link}">${displayLink}</a>
+              " title="${setting.atsignPath+atsignText}">${displayAtsign}</a>
             </span>`;
-      replacedText = replacedText.replace(link, replaceText);
+      replacedText = replacedText.replace(atsign, replaceText);
     } catch (error) {
       console.error(`Error fetching link title: ${error}`);
     }

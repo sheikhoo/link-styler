@@ -3,6 +3,7 @@ import { Type } from './enum';
 import { Data } from './constants/data';
 import { DefaultSetting } from './constants/defaultSetting';
 import { convertTextLink } from './util/convertTextLink';
+import { convertTextAtsign } from './util/convertTextAtsign';
 
 let setting: Setting;
 
@@ -38,10 +39,15 @@ function getAllElements(node) {
     const parentTag = node.parentNode;
     if (parentTag.tagName !== 'A') {
       let html = parentTag.innerHTML;
-      parentTag.innerHTML = html.replace(
+      html = html.replace(
         node.textContent,
         convertTextLink(node.textContent,setting)
       );
+      html = html.replace(
+        node.textContent,
+        convertTextAtsign(node.textContent,setting)
+      );
+      parentTag.innerHTML=html;
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
     if (node.tagName !== 'A') {
