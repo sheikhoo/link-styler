@@ -7,6 +7,10 @@ export declare const Data: {
         color: string;
         svg: string;
     };
+    atsign: {
+        color: string;
+        svg: string;
+    };
     "google.com": {
         color: string;
         svg: string;
