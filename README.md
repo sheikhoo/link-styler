@@ -1,4 +1,5 @@
 # link-styler
+<img src="docs/Logo.png" width="250" />
 
 `link-styler` is a JavaScript package that helps you find links in text and replace them with a tag that has custom styling.
 
