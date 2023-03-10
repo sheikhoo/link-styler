@@ -1,20 +1,7 @@
-import icons from './icons.json';
-import colors from './color.json';
+import { Setting } from './interface';
+import { Type } from './enum';
+import { Data } from './constants/data';
 
-interface Setting {
-  bg: boolean;
-  bgColor: string;
-  textColor: string;
-  borderRadius: number;
-  showIcon: boolean;
-  iconColor: boolean;
-  pathnameLengthLimit: number;
-}
-
-enum Type {
-  ONLOAD = 0,
-  CONVERT = 1,
-}
 
 let defaultSetting: Setting = {
   bg: true,
@@ -93,7 +80,7 @@ function convertText(t: string): string {
       let hostName = url.hostname.split('.').slice(-2).join('.');
       let displayHostName = url.hostname.replace('www.','');
 
-      let icon = icons[hostName] ? icons[hostName] : icons['defualt'];
+      let icon = Data[hostName] ? Data[hostName].svg : Data["defualt"].svg;
       let displayLink =
         `<span style='font-weight: bold;'>${displayHostName}</span>${url.pathname.length>setting.pathnameLengthLimit?url.pathname.substring(0,setting.pathnameLengthLimit)+'...':url.pathname}`;
       let replaceText = `<span style="
@@ -110,8 +97,8 @@ function convertText(t: string): string {
                   top: 3px;
                   color: ${
                     setting.iconColor
-                      ? colors[hostName]
-                        ? colors[hostName]
+                      ? Data[hostName]
+                        ? Data[hostName].color
                         : setting.textColor
                       : setting.textColor
                   };
