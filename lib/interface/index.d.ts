@@ -7,4 +7,5 @@ export interface Setting {
     iconColor: boolean;
     pathnameLengthLimit: number;
     atsignPath: string;
+    hashPath: string;
 }
