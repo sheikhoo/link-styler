@@ -1,10 +1,8 @@
-import { Setting } from './interface';
-import { Type } from './enum';
-import { Data } from './constants/data';
-import { DefaultSetting } from './constants/defaultSetting';
-import { convertTextLink } from './util/convertTextLink';
-import { convertTextAtsign } from './util/convertTextAtsign';
-import { convertTextHashtag } from "./util/convertTextHashtag";
+import { Setting } from "./interface";
+import { Type } from "./enum";
+import { Data } from "./constants/data";
+import { DefaultSetting } from "./constants/defaultSetting";
+import { convertTextLink } from "./util/convertTextLink";
 
 let setting: Setting;
 
@@ -42,18 +40,14 @@ function getAllElements(node) {
       let html = parentTag.innerHTML;
       html = html.replace(
         node.textContent,
-        convertTextHashtag(node.textContent, setting)
-      );
-      
-      html = html.replace(
-        node.textContent,
-        convertTextAtsign(node.textContent,setting)
-      );
-
-      html = html.replace(
-        node.textContent,
         convertTextLink(node.textContent, setting)
       );
+      // console.log("temp", node.textContent);
+      // console.log("html", html);
+
+      // html = html.replace(node.textContent, convertTextAtsign(html, setting));
+
+      // html = html.replace(node.textContent, convertTextLink(html, setting));
       parentTag.innerHTML = html;
     }
   } else if (node.nodeType === Node.ELEMENT_NODE) {
