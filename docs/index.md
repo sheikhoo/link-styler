@@ -1,7 +1,5 @@
 # <img src="https://github.com/sheikhoo/link-styler/raw/main/docs/Logo.png" width="250" />
 
-<div align="center">
-
 [![Build status](https://img.shields.io/github/actions/workflow/status/sheikhoo/link-styler/ci.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/sheikhoo/link-styler/blob/main/.github/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/link-styler.svg?style=flat-square)](https://www.npmjs.org/package/link-styler)
 [![install size](https://img.shields.io/badge/dynamic/json?url=https://packagephobia.com/v2/api.json?p=link-styler&query=$.install.pretty&label=install%20size&style=flat-square)](https://packagephobia.now.sh/result?p=link-styler)
@@ -11,8 +9,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/npm/link-styler/badge.svg)](https://snyk.io/test/npm/link-styler)
 [![CDNJS](https://img.shields.io/cdnjs/v/link-styler.svg?style=flat-square)](https://cdnjs.com/libraries/link-styler)
 [![License](https://img.shields.io/npm/l/link-styler.svg)](https://github.com/sheikhoo/link-styler/blob/main/LICENSE)
-
-</div>
 
 `link-styler` is a JavaScript package that helps you find links in text and replace them with a tag that has custom styling.
 
