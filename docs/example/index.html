@@ -7,9 +7,12 @@
     <title>link-styler example</title>
     <script src="https://unpkg.com/link-styler/dist/link-styler.js"></script>
     <!-- <script src="link-styler.js"></script> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Trirong"
+    />
     <style>
-      body{
+      body {
         font-family: 'Trirong', serif;
         background-color: #5d5d5d;
       }
@@ -21,6 +24,7 @@
         padding: 20px;
         border-radius: 20px;
         border: 1px solid #cfcece;
+        line-height: 34px;
       }
     </style>
   </head>
@@ -48,19 +52,17 @@
     </div>
     <div class="box" style="margin-top: 5px">
       <p>
-        Hi, my name is Sadegh and I am a skilled programmer with 5 years of
-        experience in a variety of programming languages, including JAVA,
-        Springboot, JavaScript, Oracle, MySQL, React, and more.
-      </p>
-
-      <p>
-        You can learn more about my professional background by checking out my
-        resume on LinkedIn at https://www.linkedin.com/in/sheikhoo .
+        Hi,we are CherikCoders(@Sheikhoo,@Behroz_Shafei) you can find our linkin
+        page here https://www.linkedin.com/company/cherikcoders
       </p>
       <p>
-        In addition, you can find examples of my work on my GitHub profile at
-        https://github.com/sheikhoo and my NPM packages at
-        https://www.npmjs.com/~sheikhoo.iran .</p>
+        We have skilled programmer with +5 years of experience in a variety of
+        programming languages, including #JAVA, #Springboot, #JavaScript,
+        #Oracle, #MySQL, #React, and more.
+      </p>
+      <p>
+        Can find project in https://github.com/cherikcoders or in our personal
+        github https://github.com/sheikhoo and https://github.com/BehrozShafei
       </p>
     </div>
     <script>
@@ -71,6 +73,26 @@
         borderRadius: 15,
         showIcon: true,
         iconColor: true,
+        underline: false,
+        link: {
+          pathnameLengthLimit: 20,
+        },
+        atsign: {
+          enable: true,
+          path: 'https://www.linkedin.com/in/',
+          bg: false,
+          textColor: '#e31a1ad9',
+          showIcon: true,
+          underline: true,
+        },
+        hashTag: {
+          enable: true,
+          path: 'https://www.linkedin.com/feed/hashtag/?keywords=',
+          bg: false,
+          textColor: '#0250ffd9',
+          showIcon: true,
+          underline: false,
+        },
       };
       linkStyler.start(options);
     </script>
