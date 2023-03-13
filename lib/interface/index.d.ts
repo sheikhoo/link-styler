@@ -29,6 +29,7 @@ interface AtsignSetting {
     borderRadius?: number;
     showIcon?: boolean;
     underline?: boolean;
+    removeAtsignChar?: boolean;
 }
 interface hashTagSetting {
     enable: boolean;
@@ -39,5 +40,6 @@ interface hashTagSetting {
     borderRadius?: number;
     showIcon?: boolean;
     underline?: boolean;
+    removeHashTagChar?: boolean;
 }
 export {};

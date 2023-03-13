@@ -24,7 +24,6 @@
         padding: 20px;
         border-radius: 20px;
         border: 1px solid #cfcece;
-        line-height: 34px;
       }
     </style>
   </head>
@@ -82,16 +81,18 @@
           path: 'https://www.linkedin.com/in/',
           bg: false,
           textColor: '#e31a1ad9',
-          showIcon: true,
+          showIcon: false,
           underline: true,
+          removeAtsignChar: false,
         },
         hashTag: {
           enable: true,
           path: 'https://www.linkedin.com/feed/hashtag/?keywords=',
           bg: false,
           textColor: '#0250ffd9',
-          showIcon: true,
+          showIcon: false,
           underline: false,
+          removeHashTagChar: false,
         },
       };
       linkStyler.start(options);

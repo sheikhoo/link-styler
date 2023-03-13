@@ -1,7 +1,7 @@
 {
   "name": "link-styler",
   "version": "1.0.6",
-  "description": "",
+  "description": "JavaScript package that simplifies the task of identifying links within text and applying custom styling by automatically replacing them with tags.",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc && webpack --config webpack.config.js",

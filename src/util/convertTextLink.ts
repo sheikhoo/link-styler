@@ -36,12 +36,13 @@ export function convertTextLink(t: string, setting: Setting): string {
                         }`
                       : ``
                   };
-                  padding: 1.5px 3px;
+                  padding: 0px 3px;
                   border-radius: ${
                     setting.link?.borderRadius ?? setting.borderRadius
                   }px;
                   align-items: center;
                   white-space: nowrap;
+                  font-size: 0.9em;
               ">
               ${
                 setting.link?.showIcon ?? setting.showIcon
@@ -64,7 +65,7 @@ export function convertTextLink(t: string, setting: Setting): string {
                   : ``
               }
         <a href="${link}" style="
-                    margin-left: 21px;
+                    ${setting.showIcon ? `margin-left: 21px;` : ``}
                     ${
                       setting.link?.underline ?? setting.underline
                         ? `text-decoration: underline`
@@ -85,7 +86,9 @@ export function convertTextLink(t: string, setting: Setting): string {
       try {
         let hashTagText = hashTag.replace('#', '');
         let icon = Data['hashTag'].svg;
-        let displayHashTag = `<span style='font-weight: bold;'>${hashTagText}</span>`;
+        let displayHashTag = `<span style='font-weight: bold;'>${
+          setting.hashTag?.removeHashTagChar ? hashTagText : hashTag
+        }</span>`;
 
         let replaceText = `<span style="
                 position: relative;
@@ -96,12 +99,13 @@ export function convertTextLink(t: string, setting: Setting): string {
                       }`
                     : ``
                 };
-                padding: 1.5px 3px;
+                padding: 0px 3px;
                 border-radius: ${
                   setting.hashTag?.borderRadius ?? setting.borderRadius
                 }px;
                 align-items: center;
                 white-space: nowrap;
+                font-size: 0.9em;
             ">
             ${
               setting.hashTag?.showIcon ?? setting.showIcon
@@ -118,14 +122,20 @@ export function convertTextLink(t: string, setting: Setting): string {
                 : ``
             }
       <a href="${setting.hashTag.path + hashTagText}" style="
-                  margin-left: 21px;
+                  ${
+                    setting.hashTag?.showIcon ?? setting.showIcon
+                      ? `margin-left: 21px;`
+                      : ``
+                  }
                   ${
                     setting.hashTag?.underline ?? setting.underline
                       ? `text-decoration: underline`
                       : `text-decoration: none`
                   };
                   color: ${setting.hashTag?.textColor ?? setting.textColor};
-              " title="${setting.hashTag.path}">${displayHashTag}</a>
+              " title="${
+                setting.hashTag.path + hashTagText
+              }">${displayHashTag}</a>
             </span>`;
         replacedText = replacedText.replace(hashTag, replaceText);
       } catch (error) {
@@ -142,7 +152,9 @@ export function convertTextLink(t: string, setting: Setting): string {
         let atsignText = atsign.replace('@', '');
 
         let icon = Data['atsign'].svg;
-        let displayAtsign = `<span style='font-weight: bold;'>${atsignText}</span>`;
+        let displayAtsign = `<span style='font-weight: bold;'>${
+          setting.atsign?.removeAtsignChar ? atsignText : atsign
+        }</span>`;
         let replaceText = `<span style="
                 position: relative;
                 ${
@@ -152,12 +164,13 @@ export function convertTextLink(t: string, setting: Setting): string {
                       }`
                     : ``
                 };
-                padding: 1.5px 3px;
+                padding: 0px 3px;
                 border-radius: ${
                   setting.atsign.borderRadius ?? setting.borderRadius
                 }px;
                 align-items: center;
                 white-space: nowrap;
+                font-size: 0.9em;
             ">
             ${
               setting.atsign?.showIcon ?? setting.showIcon
@@ -174,7 +187,11 @@ export function convertTextLink(t: string, setting: Setting): string {
                 : ``
             }
       <a href="${setting.atsign.path + atsignText}" style="
-                  margin-left: 21px;
+                  ${
+                    setting.atsign?.showIcon ?? setting.showIcon
+                      ? `margin-left: 21px;`
+                      : ``
+                  }
                   ${
                     setting.atsign?.underline ?? setting.underline
                       ? `text-decoration: underline`

@@ -88,41 +88,43 @@ linkStyler.start(options);
 
 `link-styler` accepts the following options:
 
-| Option                   | Default Value | Type    | Optional | Description |
-| ------------------------ | ------------- | ------- | -------- | ----------- |
-| bg                       | `true`        | boolean | \*       | -           |
-| bgColor                  | `'#a9a9a94f'` | string  | \*       | -           |
-| textColor                | `'#000000d9'` | string  | \*       | -           |
-| borderRadius             | `15`          | number  | \*       | -           |
-| showIcon                 | `true`        | boolean | \*       | -           |
-| iconColor                | `true`        | boolean | \*       | -           |
-| underline                | `false`       | boolean | \*       | -           |
-| link.pathnameLengthLimit | `20`          | number  | \*       | -           |
-| link.bg                  |               | boolean | \*       | -           |
-| link.bgColor             |               | string  | \*       | -           |
-| link.textColor           |               | string  | \*       | -           |
-| link.borderRadius        |               | number  | \*       | -           |
-| link.showIcon            |               | boolean | \*       | -           |
-| link.iconColor           |               | boolean | \*       | -           |
-| link.underline           |               | boolean | \*       | -           |
-| atsign.path              | `''`          | string  | \*       | -           |
-| atsign.enable            | `true`        | boolean | \*       | -           |
-| atsign.bg                | `false`       | boolean | \*       | -           |
-| atsign.bgColor           |               | string  | \*       | -           |
-| atsign.textColor         | `'#e31a1ad9'` | string  | \*       | -           |
-| atsign.borderRadius      |               | number  | \*       | -           |
-| atsign.showIcon          | `true`        | boolean | \*       | -           |
-| atsign.iconColor         |               | boolean | \*       | -           |
-| atsign.underline         | `true`        | boolean | \*       | -           |
-| hashTag.enable           | `true`        | boolean | \*       | -           |
-| hashTag.path             | `''`          | string  | \*       | -           |
-| hashTag.bg               | `false`       | boolean | \*       | -           |
-| hashTag.bgColor          |               | string  | \*       | -           |
-| hashTag.textColor        | `'#0250ffd9'` | string  | \*       | -           |
-| hashTag.borderRadius     |               | number  | \*       | -           |
-| hashTag.showIcon         | `true`        | boolean | \*       | -           |
-| hashTag.iconColor        |               | boolean | \*       | -           |
-| hashTag.underline        | `false`       | boolean | \*       | -           |
+| Option                    | Default Value | Type    | Optional | Description |
+| ------------------------- | ------------- | ------- | -------- | ----------- |
+| bg                        | `true`        | boolean | \*       | -           |
+| bgColor                   | `'#a9a9a94f'` | string  | \*       | -           |
+| textColor                 | `'#000000d9'` | string  | \*       | -           |
+| borderRadius              | `15`          | number  | \*       | -           |
+| showIcon                  | `true`        | boolean | \*       | -           |
+| iconColor                 | `true`        | boolean | \*       | -           |
+| underline                 | `false`       | boolean | \*       | -           |
+| link.pathnameLengthLimit  | `20`          | number  | \*       | -           |
+| link.bg                   |               | boolean | \*       | -           |
+| link.bgColor              |               | string  | \*       | -           |
+| link.textColor            |               | string  | \*       | -           |
+| link.borderRadius         |               | number  | \*       | -           |
+| link.showIcon             |               | boolean | \*       | -           |
+| link.iconColor            |               | boolean | \*       | -           |
+| link.underline            |               | boolean | \*       | -           |
+| atsign.path               | `''`          | string  | \*       | -           |
+| atsign.enable             | `true`        | boolean | \*       | -           |
+| atsign.bg                 | `false`       | boolean | \*       | -           |
+| atsign.bgColor            |               | string  | \*       | -           |
+| atsign.textColor          | `'#e31a1ad9'` | string  | \*       | -           |
+| atsign.borderRadius       |               | number  | \*       | -           |
+| atsign.showIcon           | `false`       | boolean | \*       | -           |
+| atsign.iconColor          |               | boolean | \*       | -           |
+| atsign.underline          | `true`        | boolean | \*       | -           |
+| atsign.removeAtsignChar   | `false`       | boolean | \*       | -           |
+| hashTag.enable            | `true`        | boolean | \*       | -           |
+| hashTag.path              | `''`          | string  | \*       | -           |
+| hashTag.bg                | `false`       | boolean | \*       | -           |
+| hashTag.bgColor           |               | string  | \*       | -           |
+| hashTag.textColor         | `'#0250ffd9'` | string  | \*       | -           |
+| hashTag.borderRadius      |               | number  | \*       | -           |
+| hashTag.showIcon          | `false`       | boolean | \*       | -           |
+| hashTag.iconColor         |               | boolean | \*       | -           |
+| hashTag.underline         | `false`       | boolean | \*       | -           |
+| hashTag.removeHashTagChar | `false`       | boolean | \*       | -           |
 
 ## License
 
