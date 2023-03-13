@@ -43,7 +43,7 @@ linkStyler.start();
 
 ### This will output the following:
 
-![LinkStyler](https://user-images.githubusercontent.com/11958698/224471155-ab8a9df3-5d4e-4557-ac12-a91f77b61242.png)
+![LinkStyler](https://user-images.githubusercontent.com/11958698/224623837-c5675070-66cd-4119-b17f-ba6df036a08e.png)
 
 By default, link-styler will style the link with `'#000000d9'` color and `'#a9a9a94f'` background color by border radius 15px. It will also add an external link icon. You can customize the styling by passing options to the linkStyler function:
 
