@@ -1,9 +1,9 @@
 # <img src="https://github.com/sheikhoo/link-styler/raw/main/docs/Logo.png" width="250" />
 
 [![Build status](https://img.shields.io/github/actions/workflow/status/sheikhoo/link-styler/ci.yml?branch=main&label=CI&logo=github&style=flat-square)](https://github.com/sheikhoo/link-styler/blob/main/.github/workflows/ci.yml)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/sheikhoo/link-styler/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/sheikhoo/link-styler/tree/main)
 [![npm version](https://img.shields.io/npm/v/link-styler.svg?style=flat-square)](https://www.npmjs.org/package/link-styler)
 [![install size](https://img.shields.io/badge/dynamic/json?url=https://packagephobia.com/v2/api.json?p=link-styler&query=$.install.pretty&label=install%20size&style=flat-square)](https://packagephobia.now.sh/result?p=link-styler)
-[![Build Status](https://api.travis-ci.org/sheikhoo/link-styler.svg?branch=master)](https://travis-ci.org/sheikhoo/link-styler)
 [![Downloads](https://img.shields.io/npm/dt/link-styler.svg)](https://npm-stat.com/charts.html?package=link-styler)
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=flat-square)](https://gitpod.io/#https://github.com/sheikhoo/link-styler)
 [![Known Vulnerabilities](https://snyk.io/test/npm/link-styler/badge.svg)](https://snyk.io/test/npm/link-styler)
